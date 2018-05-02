@@ -13,6 +13,21 @@ Router.get('/list', (req, res) => {
 	})
 })
 
+Router.post('/update', (req, res) => {
+	const userid = req.cookies.userid
+	if (!userid) {
+		return res.json({ code: 1 })
+	}
+	const user = req.body
+	User.findByIdAndUpdate(userid, user, (err, doc) => {
+		const data = Object.assign({}, {
+			username: doc.username,
+			type: doc.type
+		}, user)
+		return res.json({ code: 0, data})
+	})
+})
+
 Router.post('/register', (req, res) => {
 	const { username, pwd, type } = req.body
 	User.findOne({username}, (err, doc) => {
