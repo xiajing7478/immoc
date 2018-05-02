@@ -42,7 +42,7 @@ ReactDOM.render(
 					<Route path='/bossinfo' component={BossInfo}></Route>
 					<Route path='/login' component={Login}></Route>
 					<Route path='/register' component={Register}></Route>
-					<Route path='/dashboard' component={Dashboard}></Route>
+					<Route component={Dashboard}></Route>
 				</Switch>
 			</div>
 		</BrowserRouter>
