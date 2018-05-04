@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { NavBar } from 'antd-mobile'
 import { connect } from 'react-redux'
-import { Route } from 'react-router-dom'
+import NavLink from '../navLink/navLink'
+import { withRouter, Route } from 'react-router-dom'
 function Boss() {
 	return <h2>Boss首页</h2>
 }
@@ -15,6 +16,7 @@ function Msg() {
 function User() {
 	return <h2>User首页</h2>
 }
+@withRouter
 @connect(
 	state => state
 )
@@ -31,7 +33,7 @@ class Dashboard extends Component{
 				icon: 'boss',
 				title: '牛人列表',
 				component: Boss,
-				hide: user.type === 'genius'
+				hide: user.type === 'genuis'
 			},
 			{
 				path: '/genius',
@@ -59,7 +61,8 @@ class Dashboard extends Component{
 		return (
 			<div>
 				<NavBar mode="dard">{ navList.find(v => v.path === pathname).title}</NavBar>
-				<h2>footer</h2>
+				<h2>content</h2>
+				<NavLink data={navList}></NavLink>
 			</div>
 		)
 	}

@@ -12,7 +12,7 @@ import Register from './views/register/register'
 import AuthRoute from './components/authRoute/authRoute'
 import BossInfo from './views/bossinfo/bossinfo'
 import GeniusInfo from './views/geniusinfo/geniusinfo'
-import Dashboard from './views/dashboard/dashboard'
+import Dashboard from './components/dashboard/dashboard'
 import registerServiceWorker from './registerServiceWorker';
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f=>f
 
@@ -26,11 +26,11 @@ function Boss() {
 		<div>this is boss </div>
 	)
 }
-function Genius() {
-	return (
-		<div>this is Genius </div>
-	)
-}
+// function Genius() {
+// 	return (
+// 		<div>this is Genius </div>
+// 	)
+// }
 ReactDOM.render(
 	<Provider store={store}>
 		<BrowserRouter>
@@ -38,7 +38,7 @@ ReactDOM.render(
 				<AuthRoute></AuthRoute>
 				<Switch>
 					<Route path='/geniusinfo' component={GeniusInfo}></Route>
-					<Route path='/genius' component={Genius}></Route>
+					{/*<Route path='/genius' component={Genius}></Route>*/}
 					<Route path='/bossinfo' component={BossInfo}></Route>
 					<Route path='/login' component={Login}></Route>
 					<Route path='/register' component={Register}></Route>
