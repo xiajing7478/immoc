@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import reducers from './reducers/reducers'
 import './axios/config'
-
+import './assets/styles/index.css'
 import Login from './views/login/login'
 import Register from './views/register/register'
 import AuthRoute from './components/authRoute/authRoute'
@@ -21,16 +21,6 @@ const store = createStore(reducers, compose(
 	reduxDevtools
 ))
 
-function Boss() {
-	return (
-		<div>this is boss </div>
-	)
-}
-// function Genius() {
-// 	return (
-// 		<div>this is Genius </div>
-// 	)
-// }
 ReactDOM.render(
 	<Provider store={store}>
 		<BrowserRouter>
@@ -38,7 +28,6 @@ ReactDOM.render(
 				<AuthRoute></AuthRoute>
 				<Switch>
 					<Route path='/geniusinfo' component={GeniusInfo}></Route>
-					{/*<Route path='/genius' component={Genius}></Route>*/}
 					<Route path='/bossinfo' component={BossInfo}></Route>
 					<Route path='/login' component={Login}></Route>
 					<Route path='/register' component={Register}></Route>

@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
 import { loadData } from '../../reduxs/user.redux'
 import { connect } from 'react-redux'
 @withRouter
 @connect(
-	state => state.user,
+	null,
+	// state => state.user,
 	{ loadData }
 )
-class AuthRoute extends Component{
+class AuthRoute extends React.Component{
 	componentDidMount() {
-		debugger
-		const publicList = ['/login', 'register']
+		const publicList = ['/login', '/register']
 		const pathname = this.props.location.pathname
 		if (publicList.indexOf(pathname) > -1) {
 			return null

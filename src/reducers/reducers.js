@@ -1,7 +1,8 @@
 // 合并所有多个reducers，并且返回
 import { combineReducers } from 'redux'
 import { user } from '../reduxs/user.redux'
-export default combineReducers({user})
+import { lists } from '../reduxs/lists.redux'
+export default combineReducers({ user, lists })
 
 
 // import { Counter } from './index.redux'
