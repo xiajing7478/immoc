@@ -50,7 +50,7 @@ class User extends React.Component {
 					<Item type="primary" onClick={this.logout}>退出登录</Item>
 				</List>
 			</div>
-		):null
+		):<Redirect to={props.redirectTo} />
 			// <Redirect to={props.redirectTo} />
 	}
 }

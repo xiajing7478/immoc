@@ -13,6 +13,7 @@ import AuthRoute from './components/authRoute/authRoute'
 import BossInfo from './views/bossinfo/bossinfo'
 import GeniusInfo from './views/geniusinfo/geniusinfo'
 import Dashboard from './components/dashboard/dashboard'
+import Chat from './components/chat/chat'
 import registerServiceWorker from './registerServiceWorker';
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f=>f
 
@@ -31,6 +32,7 @@ ReactDOM.render(
 					<Route path='/bossinfo' component={BossInfo}></Route>
 					<Route path='/login' component={Login}></Route>
 					<Route path='/register' component={Register}></Route>
+					<Route path='/chat/:username' component={Chat}/>
 					<Route component={Dashboard}></Route>
 				</Switch>
 			</div>

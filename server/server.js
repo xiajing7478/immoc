@@ -1,15 +1,28 @@
 const express = require('express')
 const bodyParser  = require('body-parser')
 const cookieParser = require('cookie-parser')
-const userRoute = require('./user')
+// work with express
 const app = express()
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
+
+io.on('connection', function(socket) {
+	// console.log('user login')
+	socket.on('sendmsg', function (data) {
+		console.log(data)
+		io.emit('reciveMsg', data)
+	})
+})
+
+
+const userRoute = require('./user')
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use('/user', userRoute)
 app.get('/', function(req, res) {
 	res.send('hello Node')
 })
-app.listen(9093, function(err){
+server.listen(9093, function(err){
 	if (err) { console.log(err) }
 	console.log('Node app start....')
 })
