@@ -24,7 +24,12 @@ io.on('connection', function(socket) {
 	})
 })
 
-
+// delete Chat table datas
+// Chat.remove({}, (err, doc) =>{
+// 	if (!err) {
+// 		console.log(doc)
+// 	}
+// })
 
 app.use(cookieParser())
 app.use(bodyParser.json())

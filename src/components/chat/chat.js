@@ -1,10 +1,10 @@
 import React from 'react'
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 import { List, InputItem, NavBar, Icon  } from 'antd-mobile'
 import { connect } from 'react-redux'
 import { getMsgList, sendMsg, reciveMsg } from '../../reduxs/chat.redux'
 import { getChatId } from "../../utils/utils"
-const socket = io('ws://localhost:9093')
+// const socket = io('ws://localhost:9093')
 @connect(
 	state => state,
 	{ getMsgList, sendMsg, reciveMsg }
@@ -55,7 +55,7 @@ class Chat extends React.Component{
 				</NavBar>
 				{chatMsgs.map(v => {
 					const avatar = require(`../../assets/imgs/${users[v.from].avatar}.png`)
-					return v.from == userid ? (
+					return v.from === userid ? (
 						<List key={v._id}>
 							<Item
 								thumb={avatar}
