@@ -22,3 +22,12 @@
 .page-content{
 	padding:45px 5px;
 }
+
+#chat-page .chat-me .am-list-extra {
+	flex-basis: auto;
+}
+
+#chat-page .chat-me .am-list-content {
+	text-align: right;
+	padding-right: 15px;
+}

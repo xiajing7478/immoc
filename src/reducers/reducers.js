@@ -2,7 +2,8 @@
 import { combineReducers } from 'redux'
 import { user } from '../reduxs/user.redux'
 import { lists } from '../reduxs/lists.redux'
-export default combineReducers({ user, lists })
+import { chat } from '../reduxs/chat.redux'
+export default combineReducers({ user, lists, chat })
 
 
 // import { Counter } from './index.redux'

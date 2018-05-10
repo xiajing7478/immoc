@@ -5,17 +5,27 @@ const cookieParser = require('cookie-parser')
 const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
-
+const model = require('./models/models')
+const User = model.getModel('user')
+const Chat  = model.getModel('chat')
+const userRoute = require('./user')
 io.on('connection', function(socket) {
-	// console.log('user login')
 	socket.on('sendmsg', function (data) {
-		console.log(data)
-		io.emit('reciveMsg', data)
+		const { from ,to ,msg } = data
+		const chatid = [from, to].sort().join('_')
+		Chat.create({ chatid, from, to, content: msg }, (err, doc) => {
+			if(err) {
+				console.log(err)
+			}
+			io.emit('reciveMsg', Object.assign({}, doc._doc))
+		})
+		// console.log(data)
+		// io.emit('reciveMsg', data)
 	})
 })
 
 
-const userRoute = require('./user')
+
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use('/user', userRoute)
@@ -26,9 +36,6 @@ server.listen(9093, function(err){
 	if (err) { console.log(err) }
 	console.log('Node app start....')
 })
-
-
-
 
 
 

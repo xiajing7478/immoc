@@ -32,7 +32,7 @@ ReactDOM.render(
 					<Route path='/bossinfo' component={BossInfo}></Route>
 					<Route path='/login' component={Login}></Route>
 					<Route path='/register' component={Register}></Route>
-					<Route path='/chat/:username' component={Chat}/>
+					<Route path='/chat/:userid' component={Chat}/>
 					<Route component={Dashboard}></Route>
 				</Switch>
 			</div>

@@ -38,7 +38,6 @@ function successData(data) {
 }
 
 function errMsgData(data) {
-	debugger
 	return { type: 'ERROR_MSG', payload: data}
 }
 

@@ -15,7 +15,9 @@ class Genuis extends Component{
 	// 	}
 	// }
 	componentDidMount() {
-		this.props.getList('boss')
+		if (!this.props.userList.length) {
+			this.props.getList('boss')
+		}
 		// axios.get('/user/list?type=boss').then((res) => {
 		// 	if (res.data.code === 0) {
 		// 		this.setState({data: res.data.data})

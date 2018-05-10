@@ -4,8 +4,8 @@ import { withRouter } from 'react-router-dom'
 @withRouter
 class UserCard extends React.Component{
 	handleClick(v) {
-		console.log(this.props)
-		this.props.history.push(`/chat/${v.username}`)
+		// console.log(this.props)
+		this.props.history.push(`/chat/${v._id}`)
 	}
 	render(){
 		return (

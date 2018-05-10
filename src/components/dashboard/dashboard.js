@@ -6,24 +6,26 @@ import { withRouter, Route, Switch } from 'react-router-dom'
 import Boss from '../boss/boss'
 import Genuis from '../genuis/genuis'
 import User from '../user/user'
+import {getMsgList, reciveMsg } from "../../reduxs/chat.redux";
 function Msg() {
 	return <h2>msg首页</h2>
 }
-// function Dashboard1() {
-// 	return <div>DashboardDashboardDashboardDashboard</div>
-// }
 
 @withRouter
 @connect(
-	state => state
+	state => state,
+	{ getMsgList, reciveMsg }
 )
 class Dashboard extends Component{
+	componentDidMount() {
+		if (!this.props.chat.chatmsg.length) {
+			this.props.getMsgList()
+			this.props.reciveMsg()
+		}
+	}
 	render(){
 		const user = this.props.user
-		// console.log(this.props.user)
 		const { pathname } = this.props.location
-		// debugger
-		// console.log(pathname)
 		const navList= [
 			{
 				path: '/boss',
@@ -55,13 +57,6 @@ class Dashboard extends Component{
 				title: '个人中心',
 				component: User
 			}
-			// {
-			// 	path: '/',
-			// 	text: 'dashboard',
-			// 	icon: 'user',
-			// 	title: 'dashboard',
-			// 	component: Dashboard1
-			// }
 		]
 		return (
 			<div>

@@ -15,7 +15,11 @@ class Boss extends Component{
 	// 	}
 	// }
 	componentDidMount() {
-		this.props.getList('genuis')
+		// console.log('this.props.userList',this.props.userList)
+		if(!this.props.userList.length) {
+			this.props.getList('genuis')
+		}
+		// this.props.getList('genuis')
 		// axios.get('/user/list?type=genuis').then((res) => {
 		// 	if (res.data.code === 0) {
 		// 		this.setState({data: res.data.data})
