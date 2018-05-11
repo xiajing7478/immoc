@@ -1,9 +1,9 @@
 import React from 'react'
-// import io from 'socket.io-client'
 import { List, InputItem, NavBar, Icon  } from 'antd-mobile'
 import { connect } from 'react-redux'
 import { getMsgList, sendMsg, reciveMsg } from '../../reduxs/chat.redux'
 import { getChatId } from "../../utils/utils"
+// import io from 'socket.io-client'
 // const socket = io('ws://localhost:9093')
 @connect(
 	state => state,
@@ -21,14 +21,11 @@ class Chat extends React.Component{
 		// 	})
 		// })
 		if (!this.props.chat.chatmsg.length) {
-			// debugger
 			this.props.getMsgList()
 			this.props.reciveMsg()
 		}
 	}
 	handleSubmit() {
-		// socket.emit('sendmsg', {text:this.state.text})
-		// console.log(this.state)
 		const from = this.props.user._id
 		const to = this.props.match.params.userid
 		const msg = this.state.text
@@ -40,7 +37,6 @@ class Chat extends React.Component{
 		const userid = this.props.match.params.userid
 		const Item = List.Item
 		const users = this.props.chat.users
-		// console.log('this.props.user', this.props.user)
 		const chatid = getChatId(userid, this.props.user._id)
 		const chatMsgs = this.props.chat.chatmsg.filter(v => v.chatid === chatid)
 		if(!users[userid]){
